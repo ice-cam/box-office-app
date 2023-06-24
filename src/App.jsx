@@ -35,6 +35,5 @@ function App() {
     </BrowserRouter>
   );
 }
-import Show from './Pages/Show';
 
 export default App;
