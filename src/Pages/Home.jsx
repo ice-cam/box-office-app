@@ -18,27 +18,9 @@ const Home = () => {
     refetchOnWindowFocus: false,
   });
 
-  // const [apiData, setApiData] = useState([]);
-  //const [apiDataError, setApiDataError] = useState(null);
-
   const onSearch = async ({ q, searchOption }) => {
     setFilter({ q, searchOption });
   };
-  // try {
-  // setApiDataError(null);
-
-  //  let result;
-
-  // if (searchOption === 'shows') {
-  //   result = await searchForShows(q);
-  // } else {
-  //   result = await searchForPeople(q);
-  //  }
-  //  setApiData(result);
-  // } catch (error) {
-  //   setApiDataError(error);
-  //  }
-  // };
 
   const renderApiData = () => {
     if (apiDataError) {

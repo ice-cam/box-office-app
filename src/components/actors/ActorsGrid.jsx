@@ -1,4 +1,4 @@
-import { ActorsCard } from './ActorsCard';
+import ActorsCard from './ActorsCard';
 
 const ActorsGrid = ({ actors }) => {
   return (
