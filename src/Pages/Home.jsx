@@ -3,37 +3,42 @@ import { searchForShows, searchForPeople } from './../api/tvmaze';
 import SearchForm from '../components/SearchForm';
 import ShowGrid from '../components/shows/ShowGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
+import { useQuery } from '@tanstack/react-query';
 
 const Home = () => {
-  //const [searchStr, setSearchStr] = useState('');
-  const [apiData, setApiData] = useState([]);
-  const [apiDataError, setApiDataError] = useState(null);
-  // const [searchOption, setSearchOption] = useState('shows');
+  const [filter, setFilter] = useState(null);
 
-  //const onSearchInputChange = ev => {
-  // setSearchStr(ev.target.value);
-  // };
+  const { data: apiData, error: apiDataError } = useQuery({
+    queryKey: ['search', filter],
+    queryFn: () =>
+      filter.searchOption === 'shows'
+        ? searchForShows(filter.q)
+        : searchForPeople(filter.q),
+    enabled: !!filter,
+    refetchOnWindowFocus: false,
+  });
 
-  // const onRadioChange = ev => {
-  //  setSearchOption(ev.target.value);
-  // };
+  // const [apiData, setApiData] = useState([]);
+  //const [apiDataError, setApiDataError] = useState(null);
 
   const onSearch = async ({ q, searchOption }) => {
-    try {
-      setApiDataError(null);
-
-      let result;
-
-      if (searchOption === 'shows') {
-        result = await searchForShows(q);
-      } else {
-        result = await searchForPeople(q);
-      }
-      setApiData(result);
-    } catch (error) {
-      setApiDataError(error);
-    }
+    setFilter({ q, searchOption });
   };
+  // try {
+  // setApiDataError(null);
+
+  //  let result;
+
+  // if (searchOption === 'shows') {
+  //   result = await searchForShows(q);
+  // } else {
+  //   result = await searchForPeople(q);
+  //  }
+  //  setApiData(result);
+  // } catch (error) {
+  //   setApiDataError(error);
+  //  }
+  // };
 
   const renderApiData = () => {
     if (apiDataError) {
@@ -56,37 +61,7 @@ const Home = () => {
 
   return (
     <div>
-      <SearchForm onSearch={onSearch} />
-      {/* <form onSubmit={onSearch}>
-        <input type="text" value={searchStr} onChange={onSearchInputChange} />
-
-        <label>
-          Shows
-          <input
-            type="radio"
-            name="seach-option"
-            value="shows"
-            checked={searchOption === 'shows'}
-            onChange={onRadioChange}
-          />
-        </label>
-
-        <label>
-          Actors
-          <input
-            type="radio"
-            name="seach-option"
-            value="actors"
-            checked={searchOption === 'actors'}
-            onChange={onRadioChange}
-          />
-        </label>
-
-        <button type="submit">Search</button>
-      </form>
-  */}
-
-      <div>{renderApiData()}</div>
+      <SearchForm onSearch={onSearch} />- <div>{renderApiData()}</div>
     </div>
   );
 };
