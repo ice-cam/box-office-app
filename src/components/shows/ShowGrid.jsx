@@ -54,6 +54,7 @@ const ShowGrid = ({ shows }) => {
           }
           summary={data.show.summary}
           onStarMeClick={onStarMeClick}
+          isStarred={starredShows.includes(data.show.id)}
         />;
       })}
     </div>
