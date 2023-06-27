@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getShowByIds } from '../api/tvmaze';
+import { getShowsByIds } from '../api/tvmaze';
 import { useStarredShows } from '../lib/useStarredShows';
 import ShowGrid from '../components/shows/ShowGrid';
 
@@ -9,7 +9,7 @@ const Starred = () => {
   const { data: starredShows, error: starredShowsError } = useQuery({
     queryKey: ['starred', starredShowsIds],
     queryFn: () =>
-      getShowByIds(starredShowsIds).then(result =>
+      getShowsByIds(starredShowsIds).then(result =>
         result.map(show => {
           show;
         })

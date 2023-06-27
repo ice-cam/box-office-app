@@ -4,6 +4,29 @@ import SearchForm from '../components/SearchForm';
 import ShowGrid from '../components/shows/ShowGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
 import { useQuery } from '@tanstack/react-query';
+import styled, { css, ThemeProvider } from 'styled-components';
+
+const theme = {
+  color: {
+    main: 'blue',
+  },
+};
+
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid #bf4f74;
+  color: ${props => props.theme.color.main};
+  margin: 0 1em;
+  padding: 0.25em 1em;
+
+  ${props =>
+    props.$primary &&
+    css`
+      background: '#BF4F74';
+      color: white;
+    `};
+`;
 
 const Home = () => {
   const [filter, setFilter] = useState(null);
@@ -43,6 +66,8 @@ const Home = () => {
 
   return (
     <div>
+      <ThemeProvider theme={{ color: 'mediumseagreen' }}></ThemeProvider>
+      <Button>hello</Button>
       <SearchForm onSearch={onSearch} />
 
       <div>{renderApiData()}</div>
