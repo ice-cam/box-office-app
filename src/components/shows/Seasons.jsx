@@ -1,11 +1,11 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 const Seasons = ({ seasons }) => {
   return (
     <SeasonsWrapper>
       <p>Seasons in total :{seasons.length} </p>
       <p>
-        Episodes in total:
+        Episodes in total:{''}
         {seasons.reduce((sum, season) => sum + season.episodeOrder, 0)}
       </p>
 
@@ -18,7 +18,7 @@ const Seasons = ({ seasons }) => {
             </div>
 
             <div className="right">
-              Aired:
+              Aired:{''}
               <strong>
                 {season.premiereDate} - {season.endDate}
               </strong>

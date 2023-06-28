@@ -1,13 +1,13 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 const Details = props => {
-  const { status, perimered, network } = props;
+  const { status, permiered, network } = props;
 
   return (
     <DetailsWrapper>
       <p>Status: {status}</p>
       <p>
-        Perimered={perimered} {!!network && `on ${network.name}`}
+        Permiered={permiered} {!!network && `on ${network.name}`}
       </p>
     </DetailsWrapper>
   );

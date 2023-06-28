@@ -11,9 +11,9 @@ const Starred = () => {
     queryKey: ['starred', starredShowsIds],
     queryFn: () =>
       getShowsByIds(starredShowsIds).then(result =>
-        result.map(show => {
-          show;
-        })
+        result.map(show => ({
+          show,
+        }))
       ),
 
     refetchOnWindowFocus: false,
