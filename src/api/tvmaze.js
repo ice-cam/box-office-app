@@ -2,7 +2,7 @@ const BASE_URL = 'https://api.tvmaze.com';
 
 const apiGet = async queryString => {
   // throw new Error('Something Bad happen ');
-  const response = await fetch(`${BASE_URL} ${queryString}`);
+  const response = await fetch(`${BASE_URL}${queryString}`);
 
   const body = await response.json();
   return body;
