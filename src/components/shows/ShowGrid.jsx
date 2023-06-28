@@ -12,6 +12,7 @@ const ShowGrid = ({ shows }) => {
 
     if (isStarred) {
       dispatchStarred({ type: 'UNSTAR', showId });
+    } else {
       dispatchStarred({ type: 'STAR', showId });
     }
   };
