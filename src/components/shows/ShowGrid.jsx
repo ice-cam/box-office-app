@@ -19,15 +19,17 @@ const ShowGrid = ({ shows }) => {
   return (
     <FlexGrid>
       {shows.map(data => {
-        <ShowCard
-          key={data.show.id}
-          id={data.show.id}
-          name={data.show.name}
-          image={data.show.image ? data.show.image.medium : NotFoundImgSrc}
-          summary={data.show.summary}
-          onStarMeClick={onStarMeClick}
-          isStarred={starredShows.includes(data.show.id)}
-        />;
+        return (
+          <ShowCard
+            key={data.show.id}
+            id={data.show.id}
+            name={data.show.name}
+            image={data.show.image ? data.show.image.medium : NotFoundImgSrc}
+            summary={data.show.summary}
+            onStarMeClick={onStarMeClick}
+            isStarred={starredShows.includes(data.show.id)}
+          />
+        );
       })}
     </FlexGrid>
   );
